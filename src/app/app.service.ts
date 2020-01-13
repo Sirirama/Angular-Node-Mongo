@@ -7,7 +7,7 @@ import { User } from './src/app/models/user.model';
 
 @Injectable()
 export class AppService {
-    private serviceUrl = 'https://jsonplaceholder.typicode.com/users';
+    private serviceUrl = 'https://jsonplaceholder.typicode.com/';
 
     constructor(
         private router: Router,
@@ -28,7 +28,7 @@ export class AppService {
         });
     }
 
-    getUsers = ():Observable<User[]> => {
-        return this.http.get<User[]>(this.serviceUrl);
+    getUsers = (url:string):Observable<User[]> => {
+        return this.http.get<User[]>(`${this.serviceUrl}${url}`);
     }
 }

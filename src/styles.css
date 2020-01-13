@@ -32,3 +32,7 @@ body{background-position:center;background-size:cover;background-repeat:no-repea
     color: #FFF7FA;
     background-color: red
 }
+
+.routerArea {
+    margin-top: 100px;
+}

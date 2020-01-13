@@ -10,13 +10,13 @@ import { User } from '../models/user.model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  displayedColumns = ['name', 'email', 'phone', 'company'];
 
   constructor(
     private appService: AppService
   ) { }
 
-  dataSource = new UserDataSource(this.appService);
-  displayedColumns = ['name', 'email', 'phone', 'company'];
+  userDataSource = new UserDataSource(this.appService);
 
   ngOnInit() {
   }
@@ -27,7 +27,10 @@ export class UserDataSource extends DataSource<any> {
     super();
   }
   connect(): Observable<User[]> {
-    return this.appService.getUsers();
+    let userUrl:string = 'users';
+    return this.appService.getUsers(userUrl);
   }
-  disconnect() {}
+  disconnect() { 
+    console.log('Disconnected')
+  }
 }
